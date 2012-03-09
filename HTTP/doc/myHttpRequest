@@ -1,0 +1,28 @@
+myHttpRequestに関して
+
+1.HTTPリクエスト通信を代わりに送ってくれるもの
+
+以下みたいな感じで使う？
+$hoge = new myHttpRequest();
+$hoge->doGet($hoge, $port, $path, $param);
+
+$hoge->doPost($hoge, $port, $path, $content);
+
+捕捉
+【HTTP通信に関して】
+1.接続する際に必要な情報
+ - 接続先ドメイン
+ - ポート
+
+2.リクエストを送る際に必要な情報
+GETでリクエストヘッダーに必ずつけるもの
+ - Method, PASS, HTTPバージョン(実際にはヘッダーではなくリクエスト行)
+ - Host
+ - Connection
+
+POST
+ - Method, PASS, HTTPバージョン
+ - Host
+ - Content-Type:application/x-www-form-urlencoded
+ - Content-Length
+ - Connection
