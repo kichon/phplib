@@ -1,5 +1,4 @@
 <?php
-require_once 'DboSource.class.php';
 
 class MySQL extends DboSource {
 

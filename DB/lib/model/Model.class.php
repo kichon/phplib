@@ -1,5 +1,4 @@
 <?php
-require_once 'Connection.class.php';
 
 class Model {
 

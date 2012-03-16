@@ -1,6 +1,10 @@
 <?php
-require_once dirname(__FILE__).'/model/User.class.php';
-require_once dirname(__FILE__).'/model/Tweet.class.php';
+require_once dirname(__FILE__).'/ClassLoader.php';
+
+$loader = new ClassLoader();
+$loader->registerDir(dirname(__FILE__).'/lib');
+$loader->registerDir(dirname(__FILE__).'/lib/model');
+$loader->registerDir(dirname(__FILE__).'/model');
 
 $u = new User();
 

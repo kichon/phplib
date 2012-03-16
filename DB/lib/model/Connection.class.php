@@ -1,5 +1,4 @@
 <?php
-require_once 'MySQL.class.php';
 
 class Connection {
 
