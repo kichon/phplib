@@ -3,8 +3,18 @@
 class Connection {
 
     static private $instance;
+    static private $_init;
+    static private $config;
 
     private function __construct() {
+        include_once dirname(__FILE__).'/../../config/database.php';
+        if (class_exists('DB_CONFIG')) {
+            self::$config = new DB_CONFIG();
+        }
+        self::$_init = true;
+    }
+
+    static public function _init() {
     }
 
     static public function getInstance() {
@@ -18,13 +28,17 @@ class Connection {
     }
 
     public function getDataSource() {
-        $_this = Connection::getInstance();
-
-        if (!empty($_this->dataSources['mysql'])) {
-            return $_this->dataSources['mysql'];
+        if (empty(self::$_init)) {
+            self::_init();
         }
 
-        $_this->dataSources['mysql'] = new MySQL();
+        $_this = Connection::getInstance();
+
+        if (!empty($_this->dataSources[self::$config->config['datasource']])) {
+            return $_this->dataSources[self::$config->config['datasource']];
+        }
+
+        $_this->dataSources[self::$config->config['datasource']] = new MySQL(self::$config);
 
         return $_this->dataSources['mysql'];
     }

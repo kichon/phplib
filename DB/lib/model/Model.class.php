@@ -3,13 +3,17 @@
 class Model {
 
     private $instance;
-    private $table;
+    protected $table;
 
     public function __construct() {
         $this->setDataSource();
 
-        if (is_null($this->table))
+        //var_dump($this->table);
+
+        if (is_null($this->table)) {
+            //var_dump('pass');
             $this->table = strtolower(get_class($this)).'s';
+        }
         //$this->instance = Connection::getInstance();
     }
 

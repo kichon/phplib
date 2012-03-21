@@ -15,8 +15,8 @@ class ClassLoader {
         foreach ($this->dirs as $dir) {
             $file = $dir.'/'.$classname.'.class.php';
 
-            var_dump($file);
             if (is_file($file) && is_readable($file)) {
+                //var_dump($file);
                 require_once $file;
                 return;
             }
